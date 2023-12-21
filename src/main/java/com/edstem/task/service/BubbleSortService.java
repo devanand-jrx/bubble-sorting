@@ -1,5 +1,6 @@
 package com.edstem.task.service;
 
+import com.edstem.task.contract.response.BubbleSortResponse;
 import org.springframework.stereotype.Service;
 
 
@@ -7,7 +8,9 @@ import org.springframework.stereotype.Service;
 public class BubbleSortService {
 
 
-    public int[] sort(int[] numbers) {
+    public BubbleSortResponse sort(int[] numbers) {
+        long startTime = System.nanoTime();
+
         int n = numbers.length;
         boolean swapped;
 
@@ -22,8 +25,16 @@ public class BubbleSortService {
                 }
             }
         } while (swapped);
+        long endTime = System.nanoTime();
+        long estimatedTime = endTime - startTime;
 
-        return numbers;
+
+
+
+        return new BubbleSortResponse(numbers, estimatedTime);
+
+
+
     }
 
 }

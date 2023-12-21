@@ -18,13 +18,8 @@ public class BubbleSortController {
 
 
     @PostMapping("/sort")
-    public BubbleSortResponse sort(@RequestBody BubbleSortRequest request) {
-        int[] sortedNumbers = bubbleSortService.sort(request.getNumbers());
-
-        BubbleSortResponse response = new BubbleSortResponse();
-        response.setSortedNumbers(sortedNumbers);
-
-        return response;
+    public BubbleSortResponse sort(@RequestBody BubbleSortRequest bubbleSortRequest) {
+        return bubbleSortService.sort(bubbleSortRequest.getNumbers());
     }
 
 }
